@@ -1,6 +1,7 @@
 package edu.ucsb.cs156.spring.hello;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -64,6 +65,16 @@ public class TeamTest {
         team2 = new Team("test-name-2");
         team2.addMember("diff_member");
         assertFalse(team.equals(team2));
+    }
+
+    @Test
+    public void hash_code_same() {
+        team2 = new Team("test-team");
+        team2.setMembers(team.getMembers());
+        assertEquals(team.hashCode(), team2.hashCode());
+        assertEquals(team.hashCode(), team.name.hashCode() + team.members.hashCode());
+        team2 = new Team("test-team-2");
+        assertNotEquals(team.hashCode(), team2.hashCode());
     }
 
 }
