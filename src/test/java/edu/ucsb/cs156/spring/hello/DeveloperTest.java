@@ -25,7 +25,21 @@ public class DeveloperTest {
         assertEquals("Oscar", Developer.getName());
     }
 
-    // TODO: Add additional tests as needed to get to 100% jacoco line coverage, and
-    // 100% mutation coverage (all mutants timed out or killed)
+    @Test
+    public void getGithubId_returns_correct_githubId() {
+        assertEquals("obenedek20", Developer.getGithubId());
+    }
+
+    @Test
+    public void getTeam_returns_team_with_correct_name() {
+        Team t = Developer.getTeam();
+        assertEquals("f24-08", t.getName());
+        assertTrue(t.getMembers().contains("Oscar"),"Team should contain Oscar");
+        assertTrue(t.getMembers().contains("Christy"),"Team should contain Christy");
+        assertTrue(t.getMembers().contains("Mike"),"Team should contain Mike");
+        assertTrue(t.getMembers().contains("Caleb"),"Team should contain Caleb");
+        assertTrue(t.getMembers().contains("Divyani"),"Team should contain Divyani");
+        assertTrue(t.getMembers().contains("Amber"),"Team should contain Amber");
+    }
 
 }
